@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<user>
+		<username>demo</username>
+		<password>demo</password>
+	</user>
+	<user>
+		<username>admin</username>
+		<password>123456</password>
+	</user>
+	<user>
+		<username>someUser</username>
+		<password>qwerty</password>
+	</user>
+	<user>
+		<username>imooc</username>
+		<password>imooc</password>
+	</user>
+</root>

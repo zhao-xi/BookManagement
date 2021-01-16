@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<book id="1">
+		<name>java基础</name>
+		<category>计算机类</category>
+		<price>29</price>
+		<cover>img/sample_cover.png</cover>
+		<note>一本书</note>
+	</book>
+	<book id="2">
+		<name>python基础</name>
+		<category>计算机类</category>
+		<price>39</price>
+		<cover>img/sample_cover.png</cover>
+		<note>一本书</note>
+	</book>
+	<book id="3">
+		<name>ruby基础</name>
+		<category>计算机类</category>
+		<price>32</price>
+		<cover>img/sample_cover.png</cover>
+		<note>一本书</note>
+	</book>
+	<book id="4">
+		<name>c语言基础</name>
+		<category>计算机类</category>
+		<price>42</price>
+		<cover>img/sample_cover.png</cover>
+		<note>一本书</note>
+	</book>
+	<book id="5">
+		<name>唐代历史</name>
+		<category>历史类</category>
+		<price>39</price>
+		<cover>img/sample_cover.png</cover>
+		<note>一本书</note>
+	</book>
+	<book id="6">
+		<name>宋代历史</name>
+		<category>历史类</category>
+		<price>42</price>
+		<cover>img/sample_cover.png</cover>
+		<note>一本书</note>
+	</book>
+	<book id="7">
+		<name>汉代历史</name>
+		<category>历史类</category>
+		<price>45</price>
+		<cover>img/sample_cover.png</cover>
+		<note>一本书</note>
+	</book>
+	<book id="8">
+		<name>三国历史</name>
+		<category>历史类</category>
+		<price>32</price>
+		<cover>img/sample_cover.png</cover>
+		<note>一本书</note>
+	</book>
+	<book id="9">
+		<name>证券分析（上）</name>
+		<category>金融类</category>
+		<price>99</price>
+		<cover>img/sample_cover.png</cover>
+		<note>一本书</note>
+	</book>
+	<book id="10">
+		<name>证券分析（下）</name>
+		<category>金融类</category>
+		<price>99</price>
+		<cover>img/sample_cover.png</cover>
+		<note>一本书</note>
+	</book>
+	<book id="11">
+		<name>金融学基础</name>
+		<category>金融类</category>
+		<price>59</price>
+		<cover>img/sample_cover.png</cover>
+		<note>一本书</note>
+	</book>
+	<book id="12">
+		<name>金融学进阶</name>
+		<category>金融类</category>
+		<price>69</price>
+		<cover>img/sample_cover.png</cover>
+		<note>一本书</note>
+	</book>
+	<book id="13">
+		<name>红楼梦</name>
+		<category>文学类</category>
+		<price>49</price>
+		<cover>img/sample_cover.png</cover>
+		<note>一本书</note>
+	</book>
+	<book id="14">
+		<name>西游记</name>
+		<category>文学类</category>
+		<price>42</price>
+		<cover>img/sample_cover.png</cover>
+		<note>一本书</note>
+	</book>
+	<book id="15">
+		<name>水浒传</name>
+		<category>文学类</category>
+		<price>45</price>
+		<cover>img/sample_cover.png</cover>
+		<note>一本书</note>
+	</book>
+	<book id="16">
+		<name>三国演义</name>
+		<category>文学类</category>
+		<price>43</price>
+		<cover>img/sample_cover.png</cover>
+		<note>一本书</note>
+	</book>
+</root>

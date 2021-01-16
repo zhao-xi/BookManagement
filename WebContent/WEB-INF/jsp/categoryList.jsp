@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -11,10 +15,10 @@
        <header>
             <div class="container">
                     <nav>
-                            <a href="bookList.html" >图书信息管理</a>
+                            <a href="/management?target=book" >图书信息管理</a>
                     </nav>
                     <nav>
-                            <a href="categoryList.html" >分类管理</a>
+                            <a href="/management?target=category" >分类管理</a>
                     </nav>
                    
             </div>
@@ -39,12 +43,12 @@
                     </tr>
                     </thead>
                     <tbody>
-                        <c:forEach items="" var="">
+                        <c:forEach items="${categoryList}" var="category" varStatus="status">
                             <tr>
-                                <td>1</td>
-                                <td>ca0001</td>
-                                <td>计算机类</td>
-                                <td><a href="/deleteCategory?categoryId=ca0001">删除</a></td>
+                                <td>${status.index + 1}</td>
+                                <td>${category.id}</td>
+                                <td>${category.name}</td>
+                                <td><a href="/deleteCategory?categoryId=${category.id}">删除</a></td>
                                 <!--在循环显示数据时，此处的ca0001可以用EL表达式进行替换-->
 
                             </tr>
@@ -56,7 +60,7 @@
         <section class="page">
             <div class="container">
                 <div id="fatie">
-                    <a href="addCategory.html"><button>新建</button></a>
+                    <a href="/addCategory.jsp"><button>新建</button></a>
                 </div>
             </div>
         </section>

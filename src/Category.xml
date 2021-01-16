@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<category id="1">
+		<name>计算机类</name>
+	</category>
+	<category id="2">
+		<name>历史类</name>
+	</category>
+	<category id="3">
+		<name>金融类</name>
+	</category>
+	<category id="4">
+		<name>文学类</name>
+	</category>
+</root>
