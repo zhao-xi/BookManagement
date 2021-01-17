@@ -27,4 +27,10 @@ public class BookServiceImpl {
 		}
 		return books;
 	}
+	public void deleteBook(String bookId) {
+		XmlDataSource.deleteBook(bookId);
+	}
+	public void addBook(Book book) {
+		XmlDataSource.appendBook(book);
+	}
 }

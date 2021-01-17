@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -5,12 +9,38 @@
         <title>新建图书信息</title>
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/add.css">
+        <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+        <script>
+        	/* 通过ajax获取category数据，然后填到下拉表单里 */
+       		function readCategoryData() {
+       			var xmlhttp;
+       			if(window.XMLHttpRequest) {
+       				xmlhttp = new XMLHttpRequest();
+       			} else {
+       				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+       			}
+       			xmlhttp.open("GET", "/management?target=category_json", true);
+       			xmlhttp.send();
+       			xmlhttp.onreadystatechange = function() {
+       				if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+       					var text = xmlhttp.responseText;
+       					var json = JSON.parse(text);
+       					var html = "";
+       					for(var i = 0; i < json.length; i++) {
+       						var category = json[i];
+       						html = html + "<option value='" + category.name + "'>" + category.name + "</option>";
+       					}
+       					document.getElementById("categoryId").innerHTML = html;
+       				}
+       			}
+       		}
+        </script>
     </head>
-    <body>
+    <body onload="readCategoryData()">
         <nav class="navbar navbar-default">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="/dept/list.do">
+                    <a class="navbar-brand" href="/management?target=book">
                         图书信息管理
                     </a>
                 </div>
@@ -18,7 +48,7 @@
         </nav>
         <div class="container">
             <div class="jumbotron">
-                <h1>Hello, XXX!</h1>
+                <h1>Hello, ${sessionScope.username}!</h1>
                 <p>请小心地新增图书信息，要是建了一个错误的就不好了。。。</p>
             </div>
             <div class="page-header">

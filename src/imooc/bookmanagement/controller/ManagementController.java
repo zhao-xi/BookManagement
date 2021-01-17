@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.alibaba.fastjson.JSON;
+
 import imooc.bookmanagement.pojo.Book;
 import imooc.bookmanagement.pojo.Category;
 import imooc.bookmanagement.service.BookServiceImpl;
@@ -41,6 +43,9 @@ public class ManagementController extends HttpServlet {
 			this.bookManagement(request, response);
 		} else if(target.equals("category")) {
 			this.categoryManagement(request, response);
+		} else if(target.equals("category_json")) {
+			// 这个用来返回category list的json格式字符串，在添加图书页面会用得到
+			this.categoryJson(request, response);
 		}
 	}
 
@@ -63,5 +68,13 @@ public class ManagementController extends HttpServlet {
 		List<Category> categoryList = categoryService.getCategoryList();
 		request.setAttribute("categoryList", categoryList);
 		request.getRequestDispatcher("/WEB-INF/jsp/categoryList.jsp").forward(request, response);
+	}
+	
+	private void categoryJson(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		// 这个方法返回category list的json格式字符串，在添加图书页面使用ajax访问
+		List<Category> categories = categoryService.getCategoryList();
+		String text = JSON.toJSONString(categories);
+		response.setContentType("text/html;charset=UTF-8");
+		response.getWriter().println(text);
 	}
 }

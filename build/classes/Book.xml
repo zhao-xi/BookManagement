@@ -112,4 +112,11 @@
 		<cover>img/sample_cover.png</cover>
 		<note>一本书</note>
 	</book>
+	<book id="17">
+		<name>测试</name>
+		<category>文学类</category>
+		<price>43</price>
+		<cover>img/sample_cover.png</cover>
+		<note>一本书</note>
+	</book>
 </root>

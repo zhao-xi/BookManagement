@@ -23,7 +23,7 @@
         <nav class="navbar navbar-default">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="">
+                    <a class="navbar-brand" href="/management?target=book">
                         图书分类管理
                     </a>
                 </div>

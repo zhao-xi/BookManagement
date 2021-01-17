@@ -184,6 +184,64 @@ public class XmlDataSource {
 		}
 	}
 	
+	public static void deleteBook(String id) {
+		SAXReader reader = new SAXReader();
+		Writer writer = null;
+		try {
+			Document document = reader.read(bookDataFile);
+			List<Node> nodes = document.selectNodes("/root/book[@id=" + id + "]");
+			if(nodes.size() == 0) throw new RuntimeException("id=" + id + "图书不存在");
+			Element p = (Element) nodes.get(0);
+			p.getParent().remove(p);
+			writer = new OutputStreamWriter(new FileOutputStream(bookDataFile), "UTF-8");
+			document.write(writer);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			if(writer != null) {
+				try {
+					writer.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			reloadBook();
+		}
+	}
+	
+	public static void appendBook(Book book) {
+		SAXReader reader = new SAXReader();
+		Writer writer = null;
+		try {
+			Document document = reader.read(bookDataFile);
+			Element root = document.getRootElement();
+			Element p = root.addElement("book");
+			p.addAttribute("id", String.valueOf(book.getId()));
+			p.addElement("name").setText(book.getName());
+			p.addElement("category").setText(book.getCategory());
+			p.addElement("price").setText(String.valueOf(book.getPrice()));
+			p.addElement("cover").setText(book.getCover());
+			p.addElement("note").setText(book.getNote());
+			writer = new OutputStreamWriter(new FileOutputStream(bookDataFile), "UTF-8");
+			document.write(writer);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			if(writer != null) {
+				try {
+					writer.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			reloadBook();
+		}
+	}
+	
 	
 	public static void main(String[] args) {
 		// 测试用主方法

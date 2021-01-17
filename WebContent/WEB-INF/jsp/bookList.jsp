@@ -86,7 +86,7 @@
         <section class="page">
             <div class="container">
                 <div id="fatie">
-                    <a href="addBook.html"><button>新建</button></a>
+                    <a href="addBook.jsp"><button>新建</button></a>
                 </div>
             </div>
         </section>
@@ -117,7 +117,7 @@
       					html = "";
       					for(var i = 0; i < json.length; i++) {
       						var book = json[i];
-      						html = html + "<tr>";
+      						html = html + "<tr id='tr1'>";
       						html = html + "<td>" + (i + 1) + "</td>";
       						html = html + "<td>" + book.id + "</td>";
       						html = html + "<td>" + book.name + "</td>";
