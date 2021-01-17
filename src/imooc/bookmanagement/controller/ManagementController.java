@@ -46,6 +46,8 @@ public class ManagementController extends HttpServlet {
 		} else if(target.equals("category_json")) {
 			// 这个用来返回category list的json格式字符串，在添加图书页面会用得到
 			this.categoryJson(request, response);
+		} else if(target.equals("update_page")) {
+			this.showUpdatePage(request, response);
 		}
 	}
 
@@ -76,5 +78,11 @@ public class ManagementController extends HttpServlet {
 		String text = JSON.toJSONString(categories);
 		response.setContentType("text/html;charset=UTF-8");
 		response.getWriter().println(text);
+	}
+	
+	private void showUpdatePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String bookId = request.getParameter("bookId");
+		request.setAttribute("book", bookService.getBookById(bookId));
+		request.getRequestDispatcher("/updateBook.jsp").forward(request, response);
 	}
 }

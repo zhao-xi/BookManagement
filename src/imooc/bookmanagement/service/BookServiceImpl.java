@@ -33,4 +33,7 @@ public class BookServiceImpl {
 	public void addBook(Book book) {
 		XmlDataSource.appendBook(book);
 	}
+	public void updateBook(Book book) {
+		XmlDataSource.update(book);
+	}
 }

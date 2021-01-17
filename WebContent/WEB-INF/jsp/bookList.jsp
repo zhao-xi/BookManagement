@@ -71,7 +71,7 @@
                                 <td>￥${book.price}</td>
                                 <td><img src="${book.cover}" style="height:100px;"></td>
                                 <td>
-                                <a href="/updateBook?bookId=${book.id}">修改</a>
+                                <a href="/management?target=update_page&bookId=${book.id}">修改</a>
                                 <a href="/deleteBook?bookId=${book.id}">删除</a>
 
                                 </td>

@@ -242,6 +242,38 @@ public class XmlDataSource {
 		}
 	}
 	
+	// 修改图书的方法
+	public static void update(Book book) {
+		SAXReader reader = new SAXReader();
+		Writer writer = null;
+		try {
+			Document document = reader.read(bookDataFile);
+			List<Node> nodes = document.selectNodes("/root/book[@id=" + book.getId() + "]");
+			if(nodes.size() == 0) throw new RuntimeException("id=" + book.getId() + "图书不存在");
+			Element p = (Element) nodes.get(0);
+			p.selectSingleNode("name").setText(book.getName());
+			p.selectSingleNode("category").setText(book.getCategory());
+			p.selectSingleNode("price").setText(String.valueOf(book.getPrice()));
+			p.selectSingleNode("cover").setText(book.getCover());
+			p.selectSingleNode("note").setText(book.getNote());
+			writer = new OutputStreamWriter(new FileOutputStream(bookDataFile), "UTF-8");
+			document.write(writer);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			if(writer != null) {
+				try {
+					writer.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			reloadBook();
+		}
+	}
+	
 	
 	public static void main(String[] args) {
 		// 测试用主方法
