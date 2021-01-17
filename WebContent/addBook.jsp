@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/add.css">
         <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript" src="js/validation.js"></script>
         <script>
         	/* 通过ajax获取category数据，然后填到下拉表单里 */
        		function readCategoryData() {
@@ -28,12 +29,26 @@
        					var html = "";
        					for(var i = 0; i < json.length; i++) {
        						var category = json[i];
-       						html = html + "<option value='" + category.name + "'>" + category.name + "</option>";
+       						if(i == 0) {
+       							html = html + "<option value='" + category.name + "' selected>" + category.name + "</option>";
+       						} else {
+       							html = html + "<option value='" + category.name + "'>" + category.name + "</option>";
+       						}
        					}
        					document.getElementById("categoryId").innerHTML = html;
        				}
        			}
        		}
+        	
+        	/* 检测输入项 */
+        	function checkSubmit() {
+        		r1 = checkInteger('#bookId', '#errBookId');
+        		r2 = checkEmpty('#bookName', '#errBookName')
+        		r3 = checkInteger('#bookPrice', '#errBookPrice');
+        		r4 = checkFile('#bookPic', '#errBookCover');
+        		r5 = checkEmpty('#note', '#errBookNote');
+        		return r1 && r2 && r3 && r4 && r5;
+        	}
         </script>
     </head>
     <body onload="readCategoryData()">
@@ -54,23 +69,27 @@
             <div class="page-header">
                 <h3><small>新建</small></h3>
             </div>
-            <form class="form-horizontal" action="/dept/add.do" method="post">
+            <form class="form-horizontal" action="/addBook" method="post" 
+            enctype="multipart/form-data"
+            onsubmit="return checkSubmit()">
 
                 <div class="form-group">
                     <label for="name" class="col-sm-2 control-label">图书编号 ：</label>
                     <div class="col-sm-8">
-                        <input name="bookId" class="form-control" id="bookId">
+                    	<span id="errBookId" style="color:red;"></span>
+                        <input name="bookId" class="form-control" id="bookId" onblur="checkInteger('#bookId', '#errBookId')">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="name" class="col-sm-2 control-label">图书名称 ：</label>
                     <div class="col-sm-8">
-                        <input name="bookName" class="form-control" id="bookName">
+                    	<span id="errBookName" style="color:red;"></span>
+                        <input name="bookName" class="form-control" id="bookName" onblur="checkEmpty('#bookName', '#errBookName')">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="categoryId" class="col-sm-2 control-label">分类 ：</label>
-                    <select id="categoryId" name="categoryId" class="col-sm-2 form-control" style="width: auto;margin-left: 15px">
+                    <select id="categoryId" name="category" class="col-sm-2 form-control" style="width: auto;margin-left: 15px">
                        <option value="ca0001" selected="">计算机</option>
                        <option value="ca0002">文学</option>
                        <option value="ca0003">历史</option>
@@ -81,19 +100,22 @@
                  <div class="form-group">
                     <label for="name" class="col-sm-2 control-label">价格 ：</label>
                     <div class="col-sm-8">
-                        <input name="bookPrice" class="form-control" id="bookPrice">
+                    	<span id="errBookPrice" style="color:red;"></span>
+                        <input name="bookPrice" class="form-control" id="bookPrice" onblur="checkInteger('#bookPrice', '#errBookPrice')">
                     </div>
                   </div>
                    
                   <div class="form-group" >
                     <label for="name" class="col-sm-2 control-label">图书封面 ：</label>
-                    <input type="file" id="bookPic" name="bookPic" style="padding-left: 15px">
+                    <span id="errBookCover" style="color:red;"></span>
+                    <input type="file" id="bookPic" name="bookPic" style="padding-left: 15px" onchange="checkFile('#bookPic', '#errBookCover')">
                   </div>
 
                   <div class="form-group">
                     <label for="name" class="col-sm-2 control-label">备注 ：</label>
                     <div class="col-sm-8">
-                        <input name="remarks" class="form-control" id="remarks">
+                    	<span id="errBookNote" style="color:red;"></span>
+                        <input name="note" class="form-control" id="note" onblur="checkEmpty('#note', '#errBookNote')">
                     </div>
                   </div>
 

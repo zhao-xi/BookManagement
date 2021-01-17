@@ -25,7 +25,7 @@ function checkEmpty(input, errSelector) {
 }
 
 /**
- * 检查是否为数字
+ * 检查是否为整数
  */
 function checkInteger(input, errSelector) {
 	var val = $(input).val();
@@ -35,5 +35,27 @@ function checkInteger(input, errSelector) {
 	} else {
 		switchValid(true, errSelector, "");
 		return true;
+	}
+}
+
+/**
+ * 检查上传文件
+ */
+function checkFile(input, errSelector) {
+	if(!checkEmpty(input, errSelector)) {
+		return false;
+	}
+	
+	var val = $(input).val();
+	if(val.length < 4) {
+		switchValid(false, errSelector, "请选择有效的图片");
+		return false;
+	}
+	var suffix = val.substring(val.length - 3);
+	if(suffix == "jpg" || suffix == "png" || suffix == "gif") {
+		switchValid(true, errSelector, "");
+		return true;
+	} else {
+		switchValid(false, errSelector, "请选择有效的图片");
 	}
 }
